@@ -40,6 +40,7 @@ body{
     background: none;
     border-bottom: 2px solid;
     border-color: #A062C7;
+    color: #fff;
 }
 .conteudo input:focus{
     outline: none;
@@ -55,6 +56,7 @@ body{
     border-radius: 10px;
     color: #A062C7;
     cursor: pointer;
+    font-size: 20px;
 }
 .conteudo button:hover{
     background-color: #333363;

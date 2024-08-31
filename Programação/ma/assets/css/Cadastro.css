@@ -40,12 +40,15 @@
       background: none;
       border-bottom: 2px solid;
       border-color: #A062C7;
+      color: #fff;
+      
   }
   .conteudo input:focus{
       outline: none;
       transition: all 1s;
       font-size: 20px;
       border-color: #d09cf1;
+      color: white;
   }
   .conteudo button{
       background-color: #2C2B55;
@@ -55,6 +58,7 @@
       border-radius: 10px;
       color: #A062C7;
       cursor: pointer;
+      font-size: 20px;
   }
   .conteudo button:hover{
       background-color: #333363;
