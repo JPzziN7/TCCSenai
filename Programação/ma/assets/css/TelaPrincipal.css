@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400..700&display=swap');
 *{
     margin: 0;
     padding: 0;
     border: 0;
+    font-family: "Reem Kufi", sans-serif;
+}
+body{
+    height: 100%;
 }
 header{
     background-color: #5C0D9A;
@@ -90,9 +95,50 @@ main .cards .card div{
     padding: 20px;
     height: 100%;
 }
-
+main .cards .card p{
+    text-align: center;
+    font-size: 30px;
+}
+main .cards .card a{
+    margin-bottom: 20px;
+    font-size: 20px;
+    background-color: greenyellow;
+    text-decoration: none;
+    color: white;
+    width: 50%;
+    height: 20%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 main .cards .card img{
     width: 95%;
+    height: 80%;
     margin: 5px;
     border-radius: 15px;
+}
+footer #rodape{
+    background-color: #2C2C2C;
+    width: 100%;
+    margin-top: 11px;
+    color:white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+footer #rodape img{
+    width: 121px;
+}
+footer #rodape div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 10%;
+    margin-left: 10px;
+}
+footer #rodape div .icon{
+    width: 20px;
 }
