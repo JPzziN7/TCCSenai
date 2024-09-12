@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathwiz</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="shortcut icon" href="img/LogoIcon.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="shortcut icon" href="{{ asset('images/LogoIcon.png') }}" type="image/x-icon">
+    @vite('resources/css/style.css')
 </head>
 <body>
     <header>
-        <div class="logo"><a href="#inicio"><img src="img/LogoBranca.png" alt="logo"></a></div>
+        <div class="logo"><a href="#inicio"><img src="{{ asset('images/LogoBranca.png') }}" alt="logo"></a></div>
         <div class="nav"><ul>
             <li><a href="#sobre">Sobre</a></li>
             <li><a href="#personagens">Personagens</a></li>
@@ -17,17 +18,17 @@
         </ul></div>
     </header>
     <div id="inicio">
-        <img src="img/raposa.png" alt="">
+        <img src="{{ asset('images/raposa.png') }}" alt="">
         <div>
             <p>Transforme a matemática em uma aventura emocionante com o MathWiz! Nosso site é feito para crianças do 2º ao 5º ano, oferecendo jogos divertidos e interativos que tornam o aprendizado de matemática uma experiência mágica.Navegue por um mundo repleto de aventuras matemáticas e veja como a matemática pode ser empolgante e divertida! Pronto para a diversão? Clique no botão abaixo e comece sua jornada com o MathWiz!</p>
-            <a href="Login.html">Jogar</a>
+            <a href="{{ url('/login') }}">Jogar</a>
         </div>
         
     </div>
 
     <div id="sobre">
         <h1>Incentivando a aprendizagem de forma divertida</h1>
-        <img src="img/computador.jpeg" alt="">
+        <img src="{{ asset('images/computador.jpeg') }}" alt="">
     </div>
 
     <div id="personagens">
@@ -37,7 +38,7 @@
             <div class="card">
                 <h1>Mr Pi</h1>
                 <div class="conteudocard scroll">
-                    <img src="img/LogoRoxa.png" alt="">
+                    <img src="{{ asset('images/LogoRoxa.png') }}" alt="">
                     <div>
                     <p>"Olá, jovens matemáticos. Eu sou o Mr. Pi, e comigo vocês vão explorar o fascinante mundo da adição."</p>
                 </div>
@@ -47,7 +48,7 @@
             <div class="card">
                 <h1>Piti</h1>
                 <div class="conteudocard">
-                    <img src="img/LogoRoxa.png" alt=""><div>
+                    <img src="{{ asset('images/LogoRoxa.png') }}" alt=""><div>
                     <p>"Olá, sou a Piti! Se a subtração estiver confusa, não se preocupe! Vou te mostrar truques e dicas para tornar tudo mais claro e divertido."</p>
                 </div>
             </div>
@@ -56,7 +57,7 @@
             <div class="card">
             <h1>Log</h1>
                 <div class="conteudocard">
-                    <img src="img/LogoRoxa.png" alt="">
+                    <img src="{{ asset('images/LogoRoxa.png') }}" alt="">
                     <div>
                     <p>"Olá, pessoal! Sou o Log, seu amigo guaxinim que adora dividir, especialmente quando o lanche não é meu. haha!!"</p>
                 </div>
@@ -66,7 +67,7 @@
             <div class="card">
                 <h1>X</h1>
                 <div class="conteudocard"><div>
-                    <img src="img/LogoRoxa.png" alt="">
+                    <img src="{{ asset('images/LogoRoxa.png') }}" alt="">
                     <p>"Eu sou X, e não estou aqui para fazer amigos, mas para ensinar, multiplicar é apenas repetir o mesmo número, então não complique as coisas e não me faça repetir a questão"</p>
                 </div>
             </div>
@@ -79,14 +80,14 @@
         <iframe width="800" height="389" src="https://youtu.be/DmHAyQCN0mM?si=2Qs-43yNoOMMoST2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
     <footer>
-        <img src="img/Ondas.png" id="ondas">
+        <img src="{{ asset('images/Ondas.png') }}" id="ondas">
         <div id="rodape">
             <div>
                 <p>Siga nos |</p>
-                <a href="https://www.instagram.com/mathwiz_game?igsh=MXE0bWc0Y2pzNGU0bA==" target="_blank"><img src="img/instagramIcon.png" alt="" class="icon"></a>
-                <a href="mailto:mathwizsuporte@gmail.com" ><img src="img/MailIcon.png" alt="" class="icon"></a>
+                <a href="mailto:mathwizsuporte@gmail.com" target="_blank"><img src="{{ asset('images/MailIcon.png') }}" alt="" class="icon"></a>
+                <a href="https://www.instagram.com/mathwiz_game?igsh=MXE0bWc0Y2pzNGU0bA==" ><img src="{{ asset('images/instagramIcon.png') }}" alt="" class="icon"></a>
             </div>
-            <img src="img/LogoBranca.png" alt="">
+            <img src="{{ asset('images/LogoBranca.png') }}" alt="">
         </div>
     </footer>
 </body>

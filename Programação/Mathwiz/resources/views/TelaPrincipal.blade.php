@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathwiz</title>
-    <link rel="stylesheet" href="assets/css/TelaPrincipal.css">
+    <link rel="stylesheet" href="{{ asset('css/TelaPrincipal.css') }}">
+    @vite('resources/css/TelaPrincipal.css')
+    <link rel="shortcut icon" href="{{ asset('images/LogoIcon.png') }}" type="image/x-icon">
 </head>
 <body>
     <header>
-        <img src="img/LogoBranca.png" alt="" id="logo">
+        <img src="{{ asset('images/LogoBranca.png') }}" alt="" id="logo">
         <input type="checkbox" id="perfilIcon">
-        <label for="perfilIcon"><img src="img/profileIcon.png" alt="perfil"></label>
+        <label for="perfilIcon"><img src="{{ asset('images/profileIcon.png') }}" alt="perfil"></label>
         <div class="caixa">
 
         </div>
@@ -28,28 +30,28 @@
             <div class="card">
                 <div>
                 <p>Lista</p>
-                <img src="img/fundoRoxo.PNG" alt="">
+                <img src="{{ asset('images/fundoRoxo.png') }}" alt="">
                 </div>
                 <a href="">Jogar</a>  
             </div>
             <div class="card">
                 <div>
                 <p>Lista</p>
-                <img src="img/fundoRoxo.PNG" alt="">
+                <img src="{{ asset('images/fundoRoxo.png') }}" alt="">
                 </div>
                 <a href="">Jogar</a>  
             </div>
             <div class="card">
                 <div>
                 <p>Lista</p>
-                <img src="img/fundoRoxo.PNG" alt="">
+                <img src="{{ asset('images/fundoRoxo.png') }}" alt="">
                 </div>
                 <a href="">Jogar</a>  
             </div>
             <div class="card">
                 <div>
                 <p>Lista</p>
-                <img src="img/fundoRoxo.PNG" alt="">
+                <img src="{{ asset('images/fundoRoxo.png') }}" alt="">
                 </div>
                 <a href="">Jogar</a>  
             </div>
@@ -59,10 +61,10 @@
         <div id="rodape">
             <div>
                 <p>Siga nos |</p>
-                <a href="https://www.instagram.com/mathwiz_game?igsh=MXE0bWc0Y2pzNGU0bA==" target="_blank"><img src="img/instagramIcon.png" alt="" class="icon"></a>
-                <a href="mailto:mathwizsuporte@gmail.com" ><img src="img/MailIcon.png" alt="" class="icon"></a>
+                <a href="https://www.instagram.com/mathwiz_game?igsh=MXE0bWc0Y2pzNGU0bA==" target="_blank"><img src="{{ asset('images/instagramIcon.png') }}" alt="" class="icon"></a>
+                <a href="mailto:mathwizsuporte@gmail.com" ><img src="{{ asset('images/MailIcon.png') }}" alt="" class="icon"></a>
             </div>
-            <img src="img/LogoBranca.png" alt="">
+            <img src="{{ asset('images/LogoBranca.png') }}" alt="">
         </div>
     </footer>
 </body>
