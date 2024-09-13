@@ -12,9 +12,20 @@
     <header>
         <img src="{{ asset('images/LogoBranca.png') }}" alt="" id="logo">
         <input type="checkbox" id="perfilIcon">
-        <label for="perfilIcon"><img src="{{ asset('images/profileIcon.png') }}" alt="perfil"></label>
+        <label for="perfilIcon"><img src="{{ asset('images/iconPerfil.jfif') }}" alt="perfil"></label>
         <div class="caixa">
-
+            <div class="caixaconteudo">
+                <div>
+                <img src="{{ asset('images/iconPerfil.jfif') }}" alt="">
+                <p id="username"><span>UserName</span></p>
+                </div>
+                <ul>
+                    <li>Nome: <span>NOME DO USUARIO</span></li>
+                    <li><p>Email: <span>EMAIL DO USUARIO</span></p></li>
+                    <li><p>Pontuação: <span>PONTOS DO USUARIO</span></p></li>
+                </ul>
+                <button>Sair</button>
+            </div>
         </div>
     </header>
     <main>

@@ -26,11 +26,13 @@ header #logo{
 header label img{
     width: 60px;
     margin-right: 20px;
+    border-radius: 50%;
+    border: 3px solid white;
 }
 
 header .caixa{
     position: absolute;
-    background-color: #e7e9eb;
+    background-color: #d6d7d8;
     border-radius: 20px;
     height: 600px;
     width: 400px;
@@ -38,6 +40,50 @@ header .caixa{
     top: 60px;
     display: none;
     z-index: 9999;
+}
+header .caixa .caixaconteudo{
+    width: 400px;
+    height: 600px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+header .caixa .caixaconteudo img{
+    width: 150px;
+    border-radius: 50%;
+}
+header .caixa .caixaconteudo #username{
+    font-size: 25px;
+}
+header .caixa .caixaconteudo ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+header .caixa .caixaconteudo ul li{
+    height: 70px;
+    font-size: 18px;
+    border-top: 1px solid #a7a6a6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+}
+header .caixa .caixaconteudo button{
+    color: red;
+    background: none;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all .5s;
+}
+header .caixa .caixaconteudo button:hover{
+    font-size: 22px;
+    text-decoration: underline;
+    transition: all .5s;
 }
 header input[type="checkbox"]:checked ~ .caixa{
     display: block;

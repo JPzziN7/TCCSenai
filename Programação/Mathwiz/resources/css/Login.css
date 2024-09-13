@@ -8,15 +8,19 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 737px;
-    width: 1536px;
-    background-image: url('../../images/fundoRoxo.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-blend-mode: overlay;
     height: 100vh;
     margin: 0;
+    position: relative; 
+    overflow: hidden;
+}
+#fundo {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw; 
+    height: 100vh; 
+    object-fit: cover; 
+    z-index: -1; 
 }
 .conteudo{
  background-color: rgba(23, 23, 53, 0.7);
@@ -28,6 +32,7 @@ body{
  width: 500px;
  border-radius: 30px;
  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+ z-index: 1; 
 }
 
 .conteudo img{

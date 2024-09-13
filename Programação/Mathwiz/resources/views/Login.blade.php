@@ -10,14 +10,17 @@
     
 </head>
 <body>
+    <img src="{{ asset('images/giflogin.gif') }}" alt="" id="fundo">
+    <form action="">
     <div class="conteudo">
         <a href="{{ url('/') }}"><img src="{{ asset('images/LogoBranca.png') }}" alt="Logo"></a>
         <input type="text" placeholder="Username" required>
-        <input type="text" placeholder="Password" required>
+        <input type="password" placeholder="Password" required>
         <div>
         <button>Sign in</button>
         <p>Not registered?<a href="{{ url('/cadastro') }}"> Create an account</a></p>
         </div>
     </div>
+    </form>
 </body>
 </html>

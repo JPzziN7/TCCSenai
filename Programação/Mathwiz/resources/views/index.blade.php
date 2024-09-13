@@ -36,48 +36,43 @@
         <div class="cards">
 
             <div class="card">
-                <h1>Mr Pi</h1>
-                <div class="conteudocard scroll">
-                    <img src="{{ asset('images/LogoRoxa.png') }}" alt="">
-                    <div>
+                <img src="{{ asset('images/MRPI.jpg') }}" alt="">
+                <div class="conteudocard">
+                    <h1>Mr Pi</h1>
                     <p>"Olá, jovens matemáticos. Eu sou o Mr. Pi, e comigo vocês vão explorar o fascinante mundo da adição."</p>
                 </div>
             </div>
-            </div>
 
             <div class="card">
-                <h1>Piti</h1>
+                <img src="{{ asset('images/PITI.jpg') }}" alt="">
                 <div class="conteudocard">
-                    <img src="{{ asset('images/LogoRoxa.png') }}" alt=""><div>
+                    <h1>Piti</h1>
                     <p>"Olá, sou a Piti! Se a subtração estiver confusa, não se preocupe! Vou te mostrar truques e dicas para tornar tudo mais claro e divertido."</p>
                 </div>
             </div>
-            </div>
+            
 
             <div class="card">
-            <h1>Log</h1>
+                <img src="{{ asset('images/LOG.jpg') }}" alt="">
                 <div class="conteudocard">
-                    <img src="{{ asset('images/LogoRoxa.png') }}" alt="">
-                    <div>
-                    <p>"Olá, pessoal! Sou o Log, seu amigo guaxinim que adora dividir, especialmente quando o lanche não é meu. haha!!"</p>
+                <h1>Log</h1>
+                <p>"Olá, pessoal! Sou o Log, seu amigo guaxinim que adora dividir, especialmente quando o lanche não é meu. haha!!"</p>
                 </div>
-            </div>
             </div>
 
             <div class="card">
+                <img src="{{ asset('images/X.jpg') }}" alt="">
+                <div class="conteudocard">
                 <h1>X</h1>
-                <div class="conteudocard"><div>
-                    <img src="{{ asset('images/LogoRoxa.png') }}" alt="">
-                    <p>"Eu sou X, e não estou aqui para fazer amigos, mas para ensinar, multiplicar é apenas repetir o mesmo número, então não complique as coisas e não me faça repetir a questão"</p>
+                <p>"Eu sou X, e não estou aqui para fazer amigos, mas para ensinar, multiplicar é apenas repetir o mesmo número, então não complique as coisas e não me faça repetir a questão"</p>
                 </div>
-            </div>
             </div>
         </div>
     </div>
     <div id="comojogar">
         <h1>Como Jogar</h1>
         <p>Quer saber como se aventurar no MathWiz, assista um vídeo explicativo sobre</p>
-        <iframe width="800" height="389" src="https://youtu.be/DmHAyQCN0mM?si=2Qs-43yNoOMMoST2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="760" height="415" src="https://www.youtube.com/embed/LA8QGAge2Pg?si=ZldGwexqV7WbX5Yx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
     <footer>
         <img src="{{ asset('images/Ondas.png') }}" id="ondas">

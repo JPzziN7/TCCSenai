@@ -105,52 +105,62 @@ header .nav ul li a:hover{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
     margin-top: 20px;
     text-align: center;
 }
 #personagens .cards .card{
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    position: relative;
+    width: 300px;
+    height: 350px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 5px;
+    transition: filter 0.3s ease;
+}
+#personagens .cards .card:hover{
+    width: 325px;
+    height: 375px;
+    transition: all .5s;
 }
 #personagens .cards .card .conteudocard{
-    width: 300px;
-    height: 400px; 
-    background-color: #5C0D9A;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
     color: white;
-    border-radius: 20px;
-    font-size: 14px;
-    font-style: bold;
-    transition: all 1s;
-}
-#personagens .cards .card .conteudocard:hover{
-    background-color: #7936ac;
-    width: 320px;
-    height: 420px;
-    transition: all 1s;
-}
-#personagens .cards .card .conteudocard p{
+    padding: 10px;
+    text-align: center;
+    z-index: 2;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 20px;
+    justify-content: center;
 }
-#personagens .cards .card .conteudocard img{
-    border-radius: 20px 20px 0px 0px;
-    width: 300px;
-    height: 200px;
-    filter: grayscale(100%);
-    transition: all 1s;
+#personagens .cards .card:hover .conteudocard {
+    opacity: 1; 
 }
-#personagens .cards .card .conteudocard:hover img{
-    width: 320px;
-    transition: all 1s;
-    height: 220px;
-    filter: grayscale(0%);
+#personagens .cards .card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; 
+    filter: grayscale(0%); 
+    transition: filter 0.3s ease;
+}
+#personagens .cards .card:hover img {
+    filter: grayscale(100%); 
+}
+#personagens .cards .card p{
+    width: 290px;
+    margin-right: 17px;
 }
 #comojogar{
     display: flex;
