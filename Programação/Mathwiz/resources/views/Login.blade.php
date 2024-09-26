@@ -11,13 +11,22 @@
 </head>
 <body>
     <img src="{{ asset('images/giflogin.gif') }}" alt="" id="fundo">
-    <form action="">
+    @if ($errors->any())
+            <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        <h3 style="color: red; height:20px;">A senha ou usuario estão incorretos</h3>
+                    @endforeach
+            </div>
+        @endif
+    <form action="{{ route('login') }}" method="POST">
+    @csrf
     <div class="conteudo">
         <a href="{{ url('/') }}"><img src="{{ asset('images/LogoBranca.png') }}" alt="Logo"></a>
-        <input type="text" placeholder="Username" required>
-        <input type="password" placeholder="Password" required>
+        
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
         <div>
-        <button>Sign in</button>
+        <button type="submit">Login</button>
         <p>Not registered?<a href="{{ url('/cadastro') }}"> Create an account</a></p>
         </div>
     </div>

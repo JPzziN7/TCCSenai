@@ -15,16 +15,23 @@
         <label for="perfilIcon"><img src="{{ asset('images/iconPerfil.jfif') }}" alt="perfil"></label>
         <div class="caixa">
             <div class="caixaconteudo">
+            @auth
                 <div>
                 <img src="{{ asset('images/iconPerfil.jfif') }}" alt="">
-                <p id="username"><span>UserName</span></p>
+                <p id="username"><span>{{ Auth::user()->username }}</span></p> 
                 </div>
                 <ul>
-                    <li>Nome: <span>NOME DO USUARIO</span></li>
-                    <li><p>Email: <span>EMAIL DO USUARIO</span></p></li>
-                    <li><p>Pontuação: <span>PONTOS DO USUARIO</span></p></li>
+                <li>Nome:  <span>  {{ Auth::user()->name }}</span></li> 
+            <li><p>Email:  <span>  {{ Auth::user()->email }}</span></p></li> 
+            <li><p>Pontuação: <span>{{ Auth::user()->pontos ?? 0 }}</span></p></li> 
                 </ul>
-                <button>Sair</button>
+                <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit">Sair</button>
+    </form>
+    @else
+            <p>Você não está logado. <a href="{{ url('/login') }}">Clique aqui para entrar</a>.</p>
+        @endauth
             </div>
         </div>
     </header>
