@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UnidadeController;
+use App\Http\Controllers\LicaoController;
 
 Route::get('/', function () {
     return view('index');
@@ -25,3 +27,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/game', function () {
     return view('jogo');
 });
+
+Route::get('/criar-unidades', [UnidadeController::class, 'createUnidades']);
+Route::get('/criar-licoes', [LicaoController::class, 'createLicoes']);
+

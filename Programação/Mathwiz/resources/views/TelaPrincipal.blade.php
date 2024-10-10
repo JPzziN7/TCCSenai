@@ -73,6 +73,13 @@
                 </div>
                 <a href="">Jogar</a>  
             </div>
+            <div class="card">
+                <div>
+                <p>Lista</p>
+                <img src="{{ asset('images/fundoRoxo.png') }}" alt="">
+                </div>
+                <a href="">Jogar</a>  
+            </div>
         </div>
     </main>
     <footer>
