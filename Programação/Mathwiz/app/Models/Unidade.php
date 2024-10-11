@@ -10,5 +10,5 @@ class Unidade extends Model
     use HasFactory;
 
     // Permitir que o campo 'nome' seja preenchido automaticamente
-    protected $fillable = ['nome'];
+    protected $fillable = ['nome', 'materia_id'];
 }

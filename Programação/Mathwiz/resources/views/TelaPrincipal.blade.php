@@ -36,51 +36,55 @@
         </div>
     </header>
     <main>
-        <h1>Soma</h1>
-        <div id="nav">
-            <p>Lição <span>#</span></p>
-        <div>
-            <button> < </button>
-            <button> > </button>
-        </div>
+    @if (session('operacao') == null)
+    <div id="escolha">
+            <h1>Escolha uma operação:</h1>
+            <form action="{{ route('selecionar.operacao') }}" method="POST">
+                @csrf
+                <button name="operacao" value="soma">Soma</button>
+                <button name="operacao" value="subtracao">Subtração</button>
+                <button name="operacao" value="multiplicacao">Multiplicação</button>
+                <button name="operacao" value="divisao">Divisão</button>
+            </form>
+            </div>
+        @else 
+        <h1>
+    {{ ucfirst(session('operacao', 'Escolha uma operação')) }}
+    <form action="{{ route('trocar.operacao') }}" method="POST" style="display: inline;">
+        @csrf
+        <button type="submit">Trocar</button>
+    </form>
+</h1>
+    <div id="nav">
+            <p>Unidade <span>{{ session('unidade') }}</span></p> <!-- Exibe a unidade atual -->
+            <form action="{{ route('navegar.unidade') }}" method="POST">
+                @csrf
+                <div>
+                    <button type="submit" name="acao" value="anterior" {{ session('unidade') == 1 ? 'disabled' : '' }}> < </button> 
+                    <button type="submit" name="acao" value="proxima" {{ session('unidade') == 9 ? 'disabled' : '' }}> > </button> 
+                </div>
+            </form>
         </div>
         <div class="cards">
-            <div class="card">
-                <div>
-                <p>Lista</p>
-                <img src="{{ asset('images/fundoRoxo.png') }}" alt="">
+        <div class="cards">
+            @php
+                $unidadeAtual = session('unidade');
+                $numeroDaLicaoInicial = ($unidadeAtual - 1) * 5 + 1; // Cálculo do número da primeira lição da unidade
+            @endphp
+
+            @for ($i = 0; $i < 5; $i++)
+                <div class="card">
+                    <div>
+                        <p>Lição <span>{{ $numeroDaLicaoInicial + $i }}</span></p> <!-- Exibe o número da lição -->
+                        <img src="{{ asset('images/fundoRoxo.png') }}" alt="">
+                    </div>
+                    <a href="">Jogar</a>  
                 </div>
-                <a href="">Jogar</a>  
-            </div>
-            <div class="card">
-                <div>
-                <p>Lista</p>
-                <img src="{{ asset('images/fundoRoxo.png') }}" alt="">
-                </div>
-                <a href="">Jogar</a>  
-            </div>
-            <div class="card">
-                <div>
-                <p>Lista</p>
-                <img src="{{ asset('images/fundoRoxo.png') }}" alt="">
-                </div>
-                <a href="">Jogar</a>  
-            </div>
-            <div class="card">
-                <div>
-                <p>Lista</p>
-                <img src="{{ asset('images/fundoRoxo.png') }}" alt="">
-                </div>
-                <a href="">Jogar</a>  
-            </div>
-            <div class="card">
-                <div>
-                <p>Lista</p>
-                <img src="{{ asset('images/fundoRoxo.png') }}" alt="">
-                </div>
-                <a href="">Jogar</a>  
-            </div>
+            @endfor
         </div>
+        </div>
+        
+        @endif
     </main>
     <footer>
         <div id="rodape">
