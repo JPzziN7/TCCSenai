@@ -41,10 +41,10 @@
             <h1>Escolha uma operação:</h1>
             <form action="{{ route('selecionar.operacao') }}" method="POST">
                 @csrf
-                <button name="operacao" value="soma">Soma</button>
-                <button name="operacao" value="subtracao">Subtração</button>
-                <button name="operacao" value="multiplicacao">Multiplicação</button>
-                <button name="operacao" value="divisao">Divisão</button>
+                <button name="operacao" value="1">Soma</button>
+                <button name="operacao" value="2">Subtração</button>
+                <button name="operacao" value="3">Divisão</button>
+                <button name="operacao" value="4">Multiplicação</button>
             </form>
             </div>
         @else 
@@ -65,11 +65,12 @@
                 </div>
             </form>
         </div>
-        <div class="cards">
+    <div class="cards">
         
-        @php
+    @php
     $aluno = Auth::user(); // Obter o aluno autenticado
     $unidadeAtual = session('unidade');
+    
     $licoes = \App\Models\Licao::where('unidade_id', $unidadeAtual)->get(); // Licoes da unidade atual
 
     // Obter as lições liberadas do aluno
@@ -81,20 +82,18 @@
     if ($unidadeAtual == 1 && !in_array(1, $licoesLiberadas)) {
         $licoesLiberadas[] = 1; // Adiciona a lição 1 como liberada
     }
+    $materia_id = session('operacao');
 @endphp
+
 
 @foreach ($licoes as $licao)
     <div class="card">
         <div>
-            <p>Lição <span>{{ $licao->id }}</span></p> 
+            <p>Lição <span>{{ $licao->id }}</span></p>
             <img src="{{ asset('images/fundoRoxo.png') }}" alt="Imagem de fundo">
         </div>
         @if (in_array($licao->id, $licoesLiberadas))
-            @if ($licao->unidade) <!-- Verifica se a unidade está disponível -->
-                <a href="{{ route('game', ['licao' => $licao->id, 'materia' => $licao->unidade->materia_id]) }}">Jogar</a>
-            @else
-                <p>Unidade não disponível</p>
-            @endif
+        <a href="{{ route('game', ['materia' => $materia_id, 'licao' => $licao->id]) }}">Jogar</a>
         @else
             <p>Lição bloqueada</p>
         @endif

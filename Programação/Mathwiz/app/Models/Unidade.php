@@ -11,4 +11,9 @@ class Unidade extends Model
 
     // Permitir que o campo 'nome' seja preenchido automaticamente
     protected $fillable = ['nome', 'materia_id'];
+    public function materia()
+{
+    return $this->belongsTo(Materia::class);
+}
+
 }

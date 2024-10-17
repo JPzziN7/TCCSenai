@@ -26,13 +26,16 @@ class LicaoController extends Controller
         // Percorrer as unidades e suas lições
         foreach ($licoes as $unidadeNome => $licoesArray) {
             // Obter a unidade correspondente
-            $unidade = Unidade::where('nome', $unidadeNome)->first();
+        
+            $unidades = Unidade::where('nome', $unidadeNome)->get();
 
+            foreach ($unidades as $unidade){
             // Adicionar as lições para a unidade
-            if ($unidade) {
+            //if ($unidade) {
                 foreach ($licoesArray as $nome) {
                     Licao::firstOrCreate(['nome' => $nome, 'unidade_id' => $unidade->id]);
                 }
+            //}
             }
         }
 

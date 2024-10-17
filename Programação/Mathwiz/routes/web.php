@@ -6,6 +6,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UnidadeController;
 use App\Http\Controllers\LicaoController;
+use App\Models\Unidade;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('index');
@@ -25,10 +27,15 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login')->
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/game/{licao}/{materia}', function ($licao, $materia) {
-    // Acesse os parâmetros da lição e matéria na página 'jogo'
-    return view('jogo', ['licao' => $licao, 'materia' => $materia]);
+Route::get('/game/{materia}/{licao}/', function ( $materiaId,$licaoId,) {
+    $licao = \App\Models\Licao::find($licaoId);
+    $materia = \App\Models\Materia::find($materiaId);
+
+    session(['materia' => $materia->nome]); // Você pode salvar o nome ou o ID, conforme necessário
+
+    return view('jogo', compact('licao', 'materia'));
 })->name('game');
+
 
 
 Route::get('/criar-unidades', [UnidadeController::class, 'createUnidades']);
@@ -42,10 +49,13 @@ Route::post('/selecionar-operacao', function () {
 Route::post('/navegar-unidade', function () {
     $unidadeAtual = session('unidade', 1);
     $acao = request('acao');
+    
+    $operacao = session('operacao');
+    $total = \App\Models\Unidade::where('materia_id', $operacao)->count();
 
     if ($acao == 'anterior' && $unidadeAtual > 1) {
         $unidadeAtual--;
-    } elseif ($acao == 'proxima' && $unidadeAtual < 9) { // Supondo que você tenha 9 unidades
+    } elseif ($acao == 'proxima' && $unidadeAtual < $total ) { // Supondo que você tenha 9 unidades
         $unidadeAtual++;
     }
 

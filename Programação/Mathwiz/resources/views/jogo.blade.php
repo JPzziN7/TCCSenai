@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game</title>
+    <title>{{ $materia->nome }} - {{$licao->nome}}</title>
     <link rel="stylesheet" href="{{ asset('css/jogo.css') }}">
     <link rel="shortcut icon" href="{{ asset('images/LogoIcon.png') }}" type="image/x-icon">
     @vite('resources/css/jogo.css')
