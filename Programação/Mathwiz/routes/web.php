@@ -25,9 +25,11 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login')->
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/game', function () {
-    return view('jogo');
-});
+Route::get('/game/{licao}/{materia}', function ($licao, $materia) {
+    // Acesse os parâmetros da lição e matéria na página 'jogo'
+    return view('jogo', ['licao' => $licao, 'materia' => $materia]);
+})->name('game');
+
 
 Route::get('/criar-unidades', [UnidadeController::class, 'createUnidades']);
 Route::get('/criar-licoes', [LicaoController::class, 'createLicoes']);

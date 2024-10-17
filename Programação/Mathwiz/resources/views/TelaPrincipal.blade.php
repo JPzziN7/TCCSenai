@@ -66,22 +66,44 @@
             </form>
         </div>
         <div class="cards">
-        <div class="cards">
-            @php
-                $unidadeAtual = session('unidade');
-                $numeroDaLicaoInicial = ($unidadeAtual - 1) * 5 + 1; // Cálculo do número da primeira lição da unidade
-            @endphp
+        
+        @php
+    $aluno = Auth::user(); // Obter o aluno autenticado
+    $unidadeAtual = session('unidade');
+    $licoes = \App\Models\Licao::where('unidade_id', $unidadeAtual)->get(); // Licoes da unidade atual
 
-            @for ($i = 0; $i < 5; $i++)
-                <div class="card">
-                    <div>
-                        <p>Lição <span>{{ $numeroDaLicaoInicial + $i }}</span></p> <!-- Exibe o número da lição -->
-                        <img src="{{ asset('images/fundoRoxo.png') }}" alt="">
-                    </div>
-                    <a href="">Jogar</a>  
-                </div>
-            @endfor
+    // Obter as lições liberadas do aluno
+    $licoesLiberadas = \App\Models\AlunoLicao::where('aluno_id', $aluno->id)
+                       ->where('liberada', true)
+                       ->pluck('licao_id')->toArray(); 
+
+    // Garantir que a primeira lição esteja sempre liberada
+    if ($unidadeAtual == 1 && !in_array(1, $licoesLiberadas)) {
+        $licoesLiberadas[] = 1; // Adiciona a lição 1 como liberada
+    }
+@endphp
+
+@foreach ($licoes as $licao)
+    <div class="card">
+        <div>
+            <p>Lição <span>{{ $licao->id }}</span></p> 
+            <img src="{{ asset('images/fundoRoxo.png') }}" alt="Imagem de fundo">
         </div>
+        @if (in_array($licao->id, $licoesLiberadas))
+            @if ($licao->unidade) <!-- Verifica se a unidade está disponível -->
+                <a href="{{ route('game', ['licao' => $licao->id, 'materia' => $licao->unidade->materia_id]) }}">Jogar</a>
+            @else
+                <p>Unidade não disponível</p>
+            @endif
+        @else
+            <p>Lição bloqueada</p>
+        @endif
+    </div>
+@endforeach
+
+
+
+        
         </div>
         
         @endif

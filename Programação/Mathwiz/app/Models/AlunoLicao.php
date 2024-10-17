@@ -9,7 +9,13 @@ class AlunoLicao extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['aluno_id', 'licao_id', 'completa', 'liberada']; // Adicione os campos que podem ser preenchidos
+    use HasFactory;
+
+    // Defina o nome correto da tabela para evitar o problema de pluralização
+    protected $table = 'aluno_licao';
+
+    // Adicione os campos que podem ser preenchidos
+    protected $fillable = ['aluno_id', 'licao_id', 'completa', 'liberada'];
 
     public function aluno()
     {

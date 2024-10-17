@@ -11,4 +11,8 @@ class Licao extends Model
 
     protected $table = 'licoes'; // Confirme se este nome está correto
     protected $fillable = ['nome', 'unidade_id'];
+    public function unidade()
+    {
+        return $this->belongsTo(Unidade::class); // Relaciona a lição à unidade
+    }
 }
