@@ -80,7 +80,6 @@
 
     // Garantir que a primeira lição esteja sempre liberada
     if ($unidadeAtual == 1 && !in_array(1, $licoesLiberadas)) {
-        $licoesLiberadas[] = 1; // Adiciona a lição 1 como liberada
     }
     $materia_id = session('operacao');
 @endphp
@@ -89,7 +88,7 @@
 @foreach ($licoes as $licao)
     <div class="card">
         <div>
-            <p>Lição <span>{{ $licao->id }}</span></p>
+            <p> <span>{{ $licao->name }}</span></p>
             <img src="{{ asset('images/fundoRoxo.png') }}" alt="Imagem de fundo">
         </div>
         @if (in_array($licao->id, $licoesLiberadas))
