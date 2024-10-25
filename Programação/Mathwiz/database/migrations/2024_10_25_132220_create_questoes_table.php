@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('unidade_id')->constrained()->onDelete('cascade');
             $table->foreignId('materia_id')->constrained()->onDelete('cascade');
-            $table->string('enunciado'); // Coluna para o enunciado
+            $table->text('enunciado'); 
             $table->string('opcao_a');
             $table->string('opcao_b');
             $table->string('opcao_c');
