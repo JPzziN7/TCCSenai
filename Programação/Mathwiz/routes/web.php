@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UnidadeController;
 use App\Http\Controllers\LicaoController;
+use App\Http\Controllers\JogoController;
 use App\Models\Unidade;
 use Illuminate\Http\Request;
 
@@ -27,14 +28,8 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login')->
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/game/{materia}/{licao}/', function ( $materiaId,$licaoId,) {
-    $licao = \App\Models\Licao::find($licaoId);
-    $materia = \App\Models\Materia::find($materiaId);
+Route::get('/game/{materia}/{licao}', [JogoController::class, 'show'])->name('game');
 
-    session(['materia' => $materia->nome]); // Você pode salvar o nome ou o ID, conforme necessário
-
-    return view('jogo', compact('licao', 'materia'));
-})->name('game');
 
 
 

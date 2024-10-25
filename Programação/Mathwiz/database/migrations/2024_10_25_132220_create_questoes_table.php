@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('questoes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('unidade_id')->constrained()->onDelete('cascade');
-            $table->foreignId('materia_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('materia_id');
             $table->text('enunciado'); 
             $table->string('opcao_a');
             $table->string('opcao_b');

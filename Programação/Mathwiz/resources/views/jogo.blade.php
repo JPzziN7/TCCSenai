@@ -91,16 +91,24 @@
     
     <div class="conteudo">
         <form action="" method="post">
+        
         <div class="quiz">
-            <p>Veja as figuras abaixo: 🍎🍎 + 🍏🍏 = ?   Quantas frutas há no total?
-                </p>
-            <ul>
-                <input type="radio" name="alternativa" id="itemum"><label for="itemum">a</label><br>
-                <input type="radio" name="alternativa" id="itemdois"><label for="itemdois">a</label><br>
-                <input type="radio" name="alternativa" id="itemtres"><label for="itemtres">a</label><br>
-                <input type="radio" name="alternativa" id="itemquatro"><label for="itemquatro">a</label><br>
-            </ul>
-        </div>
+    <p>Veja as figuras abaixo: {!! $questao->enunciado !!} Quantas frutas há no total?</p>
+    <ul>
+        <input type="radio" name="alternativa" id="itemum" value="{{ $questao->opcao_a }}">
+        <label for="itemum">{{ $questao->opcao_a }}</label><br>
+        
+        <input type="radio" name="alternativa" id="itemdois" value="{{ $questao->opcao_b }}">
+        <label for="itemdois">{{ $questao->opcao_b }}</label><br>
+        
+        <input type="radio" name="alternativa" id="itemtres" value="{{ $questao->opcao_c }}">
+        <label for="itemtres">{{ $questao->opcao_c }}</label><br>
+        
+        <input type="radio" name="alternativa" id="itemquatro" value="{{ $questao->opcao_d }}">
+        <label for="itemquatro">{{ $questao->opcao_d }}</label><br>
+    </ul>
+</div>
+
         <div class="acoes">
             <div><ul>
                 <li>item1</li>
