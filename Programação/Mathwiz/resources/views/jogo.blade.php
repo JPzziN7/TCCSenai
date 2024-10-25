@@ -95,10 +95,10 @@
             <p>Veja as figuras abaixo: 🍎🍎 + 🍏🍏 = ?   Quantas frutas há no total?
                 </p>
             <ul>
-                <li>a</li>
-                <li>b</li>
-                <li>c</li>
-                <li>d</li>
+                <input type="radio" name="alternativa" id="itemum"><label for="itemum">a</label><br>
+                <input type="radio" name="alternativa" id="itemdois"><label for="itemdois">a</label><br>
+                <input type="radio" name="alternativa" id="itemtres"><label for="itemtres">a</label><br>
+                <input type="radio" name="alternativa" id="itemquatro"><label for="itemquatro">a</label><br>
             </ul>
         </div>
         <div class="acoes">
