@@ -9,6 +9,9 @@
     <link rel="shortcut icon" href="{{ asset('images/LogoIcon.png') }}" type="image/x-icon">
 </head>
 <body>
+    @if(session('error'))
+    {{session('error')}}
+    @endif
     <header>
         <img src="{{ asset('images/LogoBranca.png') }}" alt="" id="logo">
         <input type="checkbox" id="perfilIcon">
@@ -71,9 +74,11 @@
     $aluno = Auth::user(); // Obter o aluno autenticado
     $unidadeAtual = session('unidade');
     
-    $licoes = \App\Models\Licao::where('unidade_id', $unidadeAtual)->get(); // Licoes da unidade atual
+    $materia_id = session('operacao');
+    $licoes = \App\Models\Licao::where('unidade_id', $unidadeAtual)->where('materia_id', $materia_id)->get(); // Licoes da unidade atual
 
     // Obter as lições liberadas do aluno
+    
     $licoesLiberadas = \App\Models\AlunoLicao::where('aluno_id', $aluno->id)
                        ->where('liberada', true)
                        ->pluck('licao_id')->toArray(); 
@@ -81,14 +86,14 @@
     // Garantir que a primeira lição esteja sempre liberada
     if ($unidadeAtual == 1 && !in_array(1, $licoesLiberadas)) {
     }
-    $materia_id = session('operacao');
+    
 @endphp
 
 
 @foreach ($licoes as $licao)
     <div class="card">
         <div>
-            <p> <span>{{ $licao->name }}</span></p>
+            <p> <span>Lição {{ $licao->id }}</span></p>
             <img src="{{ asset('images/fundoRoxo.png') }}" alt="Imagem de fundo">
         </div>
         @if (in_array($licao->id, $licoesLiberadas))

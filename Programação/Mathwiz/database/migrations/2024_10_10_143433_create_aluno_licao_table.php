@@ -11,7 +11,7 @@ class CreateAlunoLicaoTable extends Migration
         Schema::create('aluno_licao', function (Blueprint $table) {
             $table->id();
             $table->foreignId('aluno_id')->constrained()->onDelete('cascade');
-            $table->foreignId('licao_id')->constrained('licoes')->onDelete('cascade'); // Use 'licoes' aqui
+            $table->foreignId('licao_id')->constrained('licoes')->onDelete('cascade'); 
             $table->boolean('completa')->default(false);
             $table->boolean('liberada')->default(false);
             $table->timestamps();

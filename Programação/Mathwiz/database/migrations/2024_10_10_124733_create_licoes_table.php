@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('licoes', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->foreignId('unidade_id')->constrained('unidades')->onDelete('cascade'); // Relaciona a unidade
+            $table->unsignedBigInteger('materia_id');
+            $table->unsignedBigInteger('unidade_id');
+            $table->foreign('unidade_id')->references('id')->on('unidades')->onDelete('cascade');
+            $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');        
             $table->timestamps();
         });
 
