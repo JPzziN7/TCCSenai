@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="botoes">
-        <a href="#">X</a>
+        <a href="{{route('home')}}">X</a>
         <input type="checkbox" id="check" style="display: none;">
         <label for="check" id="lcheck">C</label>
         <div class="config">
@@ -89,6 +89,9 @@
         </div>
     </div>
     
+    @if ($alunoLicao->completa)
+    <p>Você completou essa lição, parabéns! Vá ver a próxima.</p>
+    @else
     <div class="conteudo">
     <form action="{{ route('game.atualizar-progresso', ['licao' => $licao->id]) }}" method="POST">
         @csrf
@@ -128,6 +131,6 @@
         </div>
     </form>
     </div>
-    
+    @endif
 </body>
 </html>

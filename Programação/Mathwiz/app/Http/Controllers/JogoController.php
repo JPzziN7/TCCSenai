@@ -36,32 +36,59 @@ class JogoController extends Controller
         return view('jogo', compact('questao', 'licao', 'alunoLicao'));
     }
     public function atualizarProgresso(Request $request, $licaoId)
-    {
+{
+    $aluno = Auth::user();
 
-        $aluno = Auth::user();
+    // Obtém ou cria o registro de progresso para a lição atual
+    $alunoLicao = AlunoLicao::firstOrCreate([
+        'aluno_id' => $aluno->id,
+        'licao_id' => $licaoId,
+    ]);
 
-        $alunoLicao = AlunoLicao::firstOrCreate([
-            'aluno_id' => $aluno->id,
-            'licao_id' => $licaoId,
-        ]);
+    $progressoAtual = $alunoLicao->progresso ?? 0;
 
+    // Obtém resposta e verifica se está correta
+    $resposta = $request->input('alternativa');
+    $questao = Questao::find($request->questao_id);
+    $respostaCorreta = $questao && $questao->resposta_correta === $resposta;
 
-        $progressoAtual = $alunoLicao->progresso ?? 0;
-
-
-        $resposta = $request->input('alternativa');
-        $questao = Questao::find($request->questao_id);
-        $respostaCorreta = $questao && $questao->resposta_correta === $resposta;
-
-        if ($respostaCorreta && $progressoAtual < 5) {
-            $alunoLicao->progresso = $progressoAtual + 1;
-            $alunoLicao->save();
-        }
-
+    // Atualiza o progresso se a resposta estiver correta e o progresso for menor que 5
+    if ($respostaCorreta && $progressoAtual < 5) {
+        $alunoLicao->progresso = $progressoAtual + 1;
+        
+        // Marca a lição como completa ao atingir 5 de progresso
         if ($alunoLicao->progresso >= 5) {
-            return redirect()->back()->with('message', 'Parabéns! Você completou a lição.');
+            $alunoLicao->completa = true;
+
+            // Encontra a próxima lição na mesma matéria e unidade
+            $licaoAtual = Licao::find($licaoId);
+            $proximaLicao = Licao::where('unidade_id', $licaoAtual->unidade_id)
+                ->where('materia_id', $licaoAtual->materia_id)
+                ->where('id', '>', $licaoAtual->id)
+                ->orderBy('id')
+                ->first();
+
+            // Libera a próxima lição, se ela existir
+            if ($proximaLicao) {
+                AlunoLicao::firstOrCreate([
+                    'aluno_id' => $aluno->id,
+                    'licao_id' => $proximaLicao->id,
+                ], [
+                    'liberada' => true,
+                ]);
+            }
         }
 
-        return redirect()->back()->with('message', $respostaCorreta ? 'Resposta correta!' : 'Resposta incorreta, tente novamente.');
+        $alunoLicao->save();
     }
+
+    // Redireciona com uma mensagem dependendo se a lição foi completada ou se a resposta estava certa
+    if ($alunoLicao->completa) {
+        return redirect()->back()->with('message', 'Parabéns! Você completou a lição.');
+    }
+
+    return redirect()->back()->with('message', $respostaCorreta ? 'Resposta correta!' : 'Resposta incorreta, tente novamente.');
+}
+
+
 }
