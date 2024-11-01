@@ -48,7 +48,7 @@ class RegisterController extends Controller
         // Autentica o usuário após o registro
         Auth::login($aluno);
 
-        // Redireciona para a página inicial ou de sucesso
+        
         return redirect('/home')->with('success', 'Cadastro realizado com sucesso!');
     }
 }
