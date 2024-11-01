@@ -97,7 +97,7 @@
             <img src="{{ asset('images/fundoRoxo.png') }}" alt="Imagem de fundo">
         </div>
         @if (in_array($licao->id, $licoesLiberadas))
-        <a href="{{ route('game', ['materia' => $materia_id, 'licao' => $licao->id]) }}">Jogar</a>
+        <a href="{{ route('game', ['materia' => $materia_id, 'licao' => $licao->id, 'unidade' => $unidadeAtual]) }}">Jogar</a>
         @else
             <p>Lição bloqueada</p>
         @endif

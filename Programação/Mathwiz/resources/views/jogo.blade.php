@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $questao->materia->nome }} - {{$questao->unidade->licao->nome}}</title>
+    <title>{{ $questao->materia->nome }} - {{$licao->nome}}</title>
     <link rel="stylesheet" href="{{ asset('css/jogo.css') }}">
     <link rel="shortcut icon" href="{{ asset('images/LogoIcon.png') }}" type="image/x-icon">
     @vite('resources/css/jogo.css')
@@ -90,10 +90,12 @@
     </div>
     
     <div class="conteudo">
-        <form action="" method="post">
+    <form action="{{ route('game.atualizar-progresso', ['licao' => $licao->id]) }}" method="POST">
+        @csrf
+        <input type="hidden" name="questao_id" value="{{ $questao->id }}">
         
         <div class="quiz">
-    <p>Veja as figuras abaixo: {!! $questao->enunciado !!} Quantas frutas há no total?</p>
+    <p>{!! $questao->enunciado !!}</p>
     <ul>
         <input type="radio" name="alternativa" id="itemum" value="{{ $questao->opcao_a }}">
         <label for="itemum">{{ $questao->opcao_a }}</label><br>
@@ -110,14 +112,19 @@
 </div>
 
         <div class="acoes">
-            <div><ul>
-                <li>item1</li>
-                <li>item2</li>
-                <li>item3</li>
-                <li>item4</li>
-                <li>item5</li>
-            </ul></div>
-            <button>Continuar</button>
+        <div>
+                    <ul>
+                        @for ($i = 1; $i <= 5; $i++)
+                            <li>
+                                <input type="checkbox" name="checks" id="check{{ $i }}" 
+                                    {{ $i <= $alunoLicao->progresso ? 'checked' : '' }} 
+                                    disabled>
+                                <label for="check{{ $i }}">item {{ $i }}</label>
+                            </li>
+                        @endfor
+                    </ul>
+        </div>
+            <button type="submit">Continuar</button>
         </div>
     </form>
     </div>

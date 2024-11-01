@@ -28,9 +28,8 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login')->
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/game/{materia}/{licao}', [JogoController::class, 'show'])->name('game');
-
-
+Route::get('/game/{materia}/{licao}/{unidade}', [JogoController::class, 'show'])->name('game');
+Route::post('/game/{licao}/atualizar-progresso', [JogoController::class, 'atualizarProgresso'])->name('game.atualizar-progresso');
 
 
 Route::get('/criar-unidades', [UnidadeController::class, 'createUnidades']);

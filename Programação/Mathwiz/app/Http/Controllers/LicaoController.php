@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Licao;
 use App\Models\Unidade;
+use App\Models\Materia;
 use Illuminate\Http\Request;
 
 class LicaoController extends Controller
@@ -23,20 +24,30 @@ class LicaoController extends Controller
             'Unidade 9' => ['Lição 41', 'Lição 42', 'Lição 43', 'Lição 44', 'Lição 45'],
         ];
 
-        // Percorrer as unidades e suas lições
+        $materias = Materia::whereIn('nome', ['Adição', 'Subtração', 'Multiplicação', 'Divisão'])->pluck('id', 'nome');
+
         foreach ($licoes as $unidadeNome => $licoesArray) {
-            // Obter a unidade correspondente
         
             $unidades = Unidade::where('nome', $unidadeNome)->get();
 
-            foreach ($unidades as $unidade){
-            // Adicionar as lições para a unidade
-            //if ($unidade) {
+            foreach ($licoes as $unidadeNome => $licoesArray) {
+            // Obter a unidade correspondente
+            $unidade = Unidade::where('nome', $unidadeNome)->first();
+
+            if ($unidade) {
                 foreach ($licoesArray as $nome) {
-                    Licao::firstOrCreate(['nome' => $nome, 'unidade_id' => $unidade->id]);
+                    // Escolha a matéria para cada unidade. Aqui é um exemplo, ajuste a lógica conforme necessário
+                    $materiaId = $materias['Adição']; // Como exemplo, usando "Adição"
+
+                    // Insere a lição com a unidade e a matéria associadas
+                    Licao::firstOrCreate([
+                        'nome' => $nome,
+                        'unidade_id' => $unidade->id,
+                        'materia_id' => $materiaId
+                    ]);
                 }
-            //}
             }
+        }
         }
 
         return 'Lições criadas com sucesso!';
