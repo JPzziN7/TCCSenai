@@ -17,26 +17,35 @@
         <input type="checkbox" id="perfilIcon">
         <label for="perfilIcon"><img src="{{ asset('images/iconPerfil.jfif') }}" alt="perfil"></label>
         <div class="caixa">
-            <div class="caixaconteudo">
-            @auth
-                <div>
-                <img src="{{ asset('images/iconPerfil.jfif') }}" alt="">
-                <p id="username"><span>{{ Auth::user()->username }}</span></p> 
+    <div class="caixa-conteudo">
+        @auth
+            <!-- Perfil do Usuário -->
+            <div class="perfil">
+                <div class="perfil-imagem">
+                    <img src="{{ asset('images/iconPerfil.jfif') }}" alt="Foto de perfil de {{ Auth::user()->username }}">
+                    <p id="username"><span>{{ Auth::user()->username }}</span></p> 
                 </div>
-                <ul>
-                <li>Nome:  <span>  {{ Auth::user()->name }}</span></li> 
-            <li><p>Email:  <span>  {{ Auth::user()->email }}</span></p></li> 
-            <li><p>Pontuação: <span>{{ Auth::user()->pontos ?? 0 }}</span></p></li> 
-                </ul>
-                <form action="{{ route('logout') }}" method="POST">
-        @csrf
-        <button type="submit">Sair</button>
-    </form>
-    @else
+</div>
+
+            <!-- Informações do Usuário -->
+            <ul class="perfil-info">
+                <li><strong>Nome:</strong> <span>{{ Auth::user()->name }}</span></li>
+                <li><strong>Email:</strong> <span>{{ Auth::user()->email }}</span></li>
+                <li><strong>Pontuação:</strong> <span>{{ Auth::user()->pontos ?? 0 }}</span></li>
+            </ul>
+
+            <!-- Botão de Logout -->
+            <form action="{{ route('logout') }}" method="POST" class="logout-form">
+                @csrf
+                <button type="submit" aria-label="Sair da conta">Sair</button>
+            </form>
+        @else
+            <!-- Mensagem para Usuário Não Logado -->
             <p>Você não está logado. <a href="{{ url('/login') }}">Clique aqui para entrar</a>.</p>
         @endauth
-            </div>
-        </div>
+    </div>
+</div>
+
     </header>
     <main>
     @if (session('operacao') == null)
@@ -52,21 +61,49 @@
             </div>
         @else 
         <h1>
-    {{ ucfirst(session('operacao', 'Escolha uma operação')) }}
+        @switch(session('operacao'))
+        @case(1)
+            Adição
+            @break
+        @case(2)
+            Subtração
+            @break
+        @case(3)
+            Divisão
+            @break
+        @case(4)
+            Multiplicação
+            @break
+        @default
+            Escolha uma operação
+    @endswitch
     <form action="{{ route('trocar.operacao') }}" method="POST" style="display: inline;">
         @csrf
-        <button type="submit">Trocar</button>
+        <button type="submit">&#x27F3;</button>
     </form>
 </h1>
     <div id="nav">
             <p>Unidade <span>{{ session('unidade') }}</span></p> <!-- Exibe a unidade atual -->
             <form action="{{ route('navegar.unidade') }}" method="POST">
-                @csrf
-                <div>
-                    <button type="submit" name="acao" value="anterior" {{ session('unidade') == 1 ? 'disabled' : '' }}> < </button> 
-                    <button type="submit" name="acao" value="proxima" {{ session('unidade') == 9 ? 'disabled' : '' }}> > </button> 
-                </div>
-            </form>
+        @csrf
+        <div>
+            <!-- Botão Anterior -->
+            <button type="submit" name="acao" value="anterior" 
+                    {{ session('unidade') == 1 ? 'disabled' : '' }}
+                    aria-label="Unidade Anterior" 
+                    title="Unidade Anterior">
+                &lt; 
+            </button> 
+            
+            <!-- Botão Próxima -->
+            <button type="submit" name="acao" value="proxima" 
+                    {{ session('unidade') == 9 ? 'disabled' : '' }}
+                    aria-label="Próxima Unidade" 
+                    title="Próxima Unidade">
+                &gt; 
+            </button> 
+        </div>
+    </form>
         </div>
     <div class="cards">
         
@@ -93,13 +130,13 @@
 @foreach ($licoes as $licao)
     <div class="card">
         <div>
-            <p> <span>Lição {{ $licao->id }}</span></p>
+            <p> <span>{{ $licao->nome }}</span></p>
             <img src="{{ asset('images/fundoRoxo.png') }}" alt="Imagem de fundo">
         </div>
         @if (in_array($licao->id, $licoesLiberadas))
         <a href="{{ route('game', ['materia' => $materia_id, 'licao' => $licao->id, 'unidade' => $unidadeAtual]) }}">Jogar</a>
         @else
-            <p>Lição bloqueada</p>
+            <p><span style="color: gray;">&#x1F512;</span>Bloqueada</p>
         @endif
     </div>
 @endforeach
