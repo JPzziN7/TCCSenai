@@ -178,6 +178,71 @@ main h1 button:focus {
     outline: none;
 }
 
+#escolha {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    height: 100vh; /* Ocupa toda a altura da tela */
+    text-align: center; /* Centraliza o texto */
+    margin-bottom: 98px;
+}
+
+#escolha h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #34495e;
+}
+
+#escolha form {
+    display: flex;
+    flex-direction: row; /* Disposição horizontal */
+    justify-content: center; /* Centraliza os botões horizontalmente */
+    gap: 15px; /* Espaçamento entre os botões */
+}
+
+#escolha form button {
+    background-color: #f0f0f0; /* Fundo suave cinza claro */
+    color: #34495e; /* Cor do texto */
+    font-size: 30px; /* Tamanho maior para os símbolos */
+    border: none; /* Remove a borda */
+    padding: 20px 40px; /* Espaçamento interno */
+    cursor: pointer; /* Cursor de pointer para indicar clicável */
+    border-radius: 10px; /* Bordas arredondadas */
+    transition: all 0.3s ease; /* Transição suave ao passar o mouse */
+    width: 80px; /* Largura fixa para os botões */
+    height: 80px; /* Altura fixa para os botões */
+    display: flex;
+    align-items: center; /* Alinha o texto verticalmente */
+    justify-content: center; /* Alinha o texto horizontalmente */
+}
+
+#escolha form button:hover {
+    background-color: #e0e0e0; /* Fundo um pouco mais escuro ao passar o mouse */
+    transform: scale(1.1); /* Leve aumento do botão */
+}
+
+#escolha form button:focus {
+    outline: none; /* Remove o contorno de foco */
+}
+
+#escolha form button.adicao {
+    background-color: #28a745; /* Verde mais sofisticado */
+}
+
+#escolha form button.subtracao {
+    background-color: #e91e63; /* Rosa vibrante e moderno */
+}
+
+#escolha form button.multiplicacao {
+    background-color: #f39c12; /* Amarelo dourado mais suave */
+}
+
+#escolha form button.divisao {
+    background-color: #3498db; /* Azul mais tranquilo e elegante */
+}
+
+
 main #nav {
     border: 1px solid #dcdcdc;
     display: flex;

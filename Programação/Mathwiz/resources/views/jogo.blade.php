@@ -9,10 +9,10 @@
     @vite('resources/css/jogo.css')
 </head>
 <body>
-    <div class="botoes">
+    <header class="botoes">
         <a href="{{route('home')}}">X</a>
         <input type="checkbox" id="check" style="display: none;">
-        <label for="check" id="lcheck">C</label>
+        <label for="check" id="lcheck">&#x2699;</label>
         <div class="config">
             <h1>Configurações</h1>
             <audio id="musica" loop autoplay>
@@ -87,10 +87,12 @@
                 };
             </script>
         </div>
-    </div>
+            </header>
     
     @if ($alunoLicao->completa)
-    <p>Você completou essa lição, parabéns! Vá ver a próxima.</p>
+    <div class="completou">
+    <p>Você completou essa lição, parabéns!🎉 Vá ver a próxima.</p>
+    </div>
     @else
     <div class="conteudo">
     <form action="{{ route('game.atualizar-progresso', ['licao' => $licao->id]) }}" method="POST">
@@ -115,20 +117,19 @@
 </div>
 
         <div class="acoes">
-        <div>
-                    <ul>
-                        @for ($i = 1; $i <= 5; $i++)
-                            <li>
-                                <input type="checkbox" name="checks" id="check{{ $i }}" 
-                                    {{ $i <= $alunoLicao->progresso ? 'checked' : '' }} 
-                                    disabled>
-                                <label for="check{{ $i }}">item {{ $i }}</label>
-                            </li>
-                        @endfor
-                    </ul>
-        </div>
-            <button type="submit">Continuar</button>
-        </div>
+        <ul>
+            @for ($i = 1; $i <= 5; $i++)
+                <li>
+                    <input type="checkbox" name="checks" id="check{{ $i }}"
+                        {{ $i <= $alunoLicao->progresso ? 'checked' : '' }} disabled>
+                    <label for="check{{ $i }}">item {{ $i }}</label>
+                </li>
+            @endfor
+        </ul>
+    </div>
+        <button type="submit" class="continuar-btn">Continuar</button>
+    
+</div>
     </form>
     </div>
     @endif

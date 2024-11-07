@@ -1,42 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400..700&display=swap');
 *{
     margin: 0;
     padding: 0;
+    font-family: "Reem Kufi", sans-serif;
 }
 body{
     width: 100%;
     display: flex;
     flex-direction: column;
+    background-color: #8e44ad;
 }
 
-.botoes{
-    width: 100%;
+.botoes {
     display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.0); /* Transparente */
+    font-size: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    height: 80px;
 }
-.botoes a, .botoes #lcheck{
-    margin: 20px;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.botoes a{
-    color: white;
+
+/* Estilizando o botão "X" */
+.botoes a {
     text-decoration: none;
-    background-color: yellow;
-    border-radius: 50%;
-    font-size: 20px;
+    color: #FF4D4D; /* Vermelho para contraste */
+    font-size: 28px;
+    margin-right: 20px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
 }
-.botoes #lcheck{
-    color: white;
-    text-decoration: none;
-    background-color: yellow;
-    border-radius: 50%;
-    font-size: 20px;
+
+.botoes a:hover {
+    transform: scale(1.2); /* Aumenta levemente no hover */
 }
+
+/* Estilizando o ícone de configurações */
+.botoes #lcheck {
+    font-size: 28px;
+    color: #4CAF50; /* Verde para contraste */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.botoes #lcheck:hover {
+    transform: scale(1.2); /* Aumenta levemente no hover */
+}
+
+
+
 .config{
     display: none;
     width: 300px; 
@@ -97,13 +111,188 @@ body{
     align-items: center;
     width: 100%;
 }
-.conteudo form .quiz{
+.conteudo form .quiz {
     background-color: white;
     width: 70%;
-    margin: 20px;
-    height: 600px;
-    border-radius: 50px;
+    margin: 20px; 
+    height: 570px;
+    border-radius: 50px; 
+    padding: 20px; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+    overflow-y: auto;
+    display: flex; /* Usando flexbox */
+    flex-direction: column; /* Organizando os itens na vertical */
+    justify-content: center; /* Centralizando verticalmente */
+    align-items: center; /* Centralizando horizontalmente */
+    text-align: center; /* Centralizando o texto */
 }
-.conteudo form .acoes{
-    background-color: white;
+
+.quiz p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Estilizando a lista das alternativas dentro da .quiz */
+.quiz ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex; /* Usando flexbox para alinhar os itens horizontalmente */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    gap: 20px; /* Adiciona espaçamento entre os itens */
+}
+
+/* Estilizando os inputs de rádio dentro da .quiz para torná-los invisíveis */
+.quiz ul input[type="radio"] {
+    opacity: 0; /* Torna o input invisível */
+    position: absolute; /* Retira o input do fluxo normal do layout */
+    width: 0; /* Zera a largura */
+    height: 0; /* Zera a altura */
+}
+
+/* Estilizando os labels dentro da .quiz */
+.quiz ul label {
+    font-size: 16px;
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Efeito de hover para os labels dentro da .quiz */
+.quiz ul label:hover {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+/* Estilizando os inputs de rádio selecionados dentro da .quiz */
+.quiz ul input[type="radio"]:checked + label {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Estilizando os elementos de input de rádio não selecionados dentro da .quiz */
+.quiz ul input[type="radio"]:not(:checked) + label {
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+
+.acoes {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+}
+
+/* Escondendo os checkboxes */
+.acoes input[type="checkbox"] {
+    display: none;
+}
+
+/* Estilizando os itens da lista */
+.acoes ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.acoes ul li {
+    height: 30px;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #e0e0e0;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.acoes input[type="checkbox"]:checked + label {
+    color: #fff;
+    background-color: #4CAF50; 
+    border-color: #4CAF50;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    
+}
+.acoes input[type="checkbox"]:checked + label {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.acoes input[type="checkbox"]:checked ~ label {
+    background-color: #4CAF50; 
+    width: 100%;
+    height: 100%;
+    color: #fff;
+}
+.acoes ul li:hover {
+    background-color: #f4f4f4;
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+.acoes input[type="checkbox"]:disabled ~ li {
+    color: #999;
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+.continuar-btn {
+    background-color: #4CAF50; /* Cor verde */
+    color: #fff; /* Cor do texto */
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 150px; /* Largura completa dentro do contêiner */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Efeito ao passar o mouse */
+.continuar-btn:hover {
+    background-color: #45A049; /* Cor um pouco mais escura */
+    transform: translateY(-2px); /* Elevação sutil */
+}
+
+/* Efeito ao clicar no botão */
+.continuar-btn:active {
+    background-color: #3E8E41; /* Cor mais escura */
+    transform: translateY(0); /* Remove a elevação */
+}
+
+/* Estilo para o botão quando estiver desativado */
+.continuar-btn:disabled {
+    background-color: #ddd; /* Cor de fundo cinza */
+    color: #999; /* Cor de texto desabilitado */
+    cursor: not-allowed;
+}
+
+.completou {
+    color: #fff; /* Cor branca para o texto */
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    text-align: center;
+    height: 570px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

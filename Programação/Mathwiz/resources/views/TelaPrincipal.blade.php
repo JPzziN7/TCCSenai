@@ -53,10 +53,10 @@
             <h1>Escolha uma operação:</h1>
             <form action="{{ route('selecionar.operacao') }}" method="POST">
                 @csrf
-                <button name="operacao" value="1">Soma</button>
-                <button name="operacao" value="2">Subtração</button>
-                <button name="operacao" value="3">Divisão</button>
-                <button name="operacao" value="4">Multiplicação</button>
+                <button name="operacao" value="1" class="adicao">⊕</button>
+        <button name="operacao" value="2" class="subtracao">−</button>
+        <button name="operacao" value="3" class="divisao">÷</button>
+        <button name="operacao" value="4" class="multiplicacao">×</button>
             </form>
             </div>
         @else 
