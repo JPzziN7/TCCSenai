@@ -31,7 +31,7 @@
             <ul class="perfil-info">
                 <li><strong>Nome:</strong> <span>{{ Auth::user()->name }}</span></li>
                 <li><strong>Email:</strong> <span>{{ Auth::user()->email }}</span></li>
-                <li><strong>Pontuação:</strong> <span>{{ Auth::user()->pontos ?? 0 }}</span></li>
+                <li><strong>Pontuação:</strong> <span>{{ $pontuacao}}</span></li>
             </ul>
 
             <!-- Botão de Logout -->

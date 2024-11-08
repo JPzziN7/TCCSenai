@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Licao;
 use App\Models\Questao;
 use App\Models\AlunoLicao;
+use App\Models\Pontuacao;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\AlunoQuestao;
@@ -69,6 +70,17 @@ class JogoController extends Controller
    $respostaCorreta = $questao->resposta_correta === $resposta;
 
    if ($respostaCorreta) {
+    // Obtém ou cria o registro de pontuação do aluno
+    $pontuacao = Pontuacao::firstOrCreate([
+        'aluno_id' => $aluno->id,
+    ]);
+
+    $pontuacao->pontuacao += 20;
+
+    // Salva a pontuação no banco de dados
+    $pontuacao->save();
+
+    // Marca a questão como respondida
     AlunoQuestao::firstOrCreate([
         'aluno_id' => $aluno->id,
         'questao_id' => $questao->id,
@@ -76,7 +88,7 @@ class JogoController extends Controller
 }
 
 
-if ($respostaCorreta && $progressoAtual < 5) {
+if ($progressoAtual < 5) {
     $alunoLicao->progresso = $progressoAtual + 1;
 
     // Marca a lição como completa ao atingir 5 de progresso

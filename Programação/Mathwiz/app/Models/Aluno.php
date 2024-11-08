@@ -20,4 +20,8 @@ class Aluno extends Authenticatable
         'password',
         'remember_token',
     ];
+    public function pontuacao()
+    {
+        return $this->hasOne(Pontuacao::class, 'aluno_id');
+    }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UnidadeController;
 use App\Http\Controllers\LicaoController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JogoController;
 use App\Models\Unidade;
 use Illuminate\Http\Request;
@@ -17,9 +18,7 @@ Route::get('/', function () {
 
 Route::get('/cadastro', [RegisterController::class, 'showRegistrationForm'])->name('cadastro')->middleware('guest');
 
-Route::get('/home', function () {
-    return view('TelaPrincipal')->with('unidade', session('unidade', 1)); 
-})->middleware('auth')->name('home');
+Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
