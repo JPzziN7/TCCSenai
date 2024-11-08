@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $questao->materia->nome }} - {{$licao->nome}}</title>
+    <title>@if ($questao)
+            {{ $questao->materia->nome }} - {{ $licao->nome }}
+        @else
+            Lição Completa
+        @endif</title>
     <link rel="stylesheet" href="{{ asset('css/jogo.css') }}">
     <link rel="shortcut icon" href="{{ asset('images/LogoIcon.png') }}" type="image/x-icon">
     @vite('resources/css/jogo.css')
@@ -89,15 +93,22 @@
         </div>
             </header>
     
-    @if ($alunoLicao->completa)
+    
+            @if (isset($mensagem))
+    <div class="mensagem">
+        <p>{{ $mensagem }}</p>
+    </div>
+    @elseif ($alunoLicao->completa)
     <div class="completou">
     <p>Você completou essa lição, parabéns!🎉 Vá ver a próxima.</p>
     </div>
-    @else
+    @elseif ($questao)
     <div class="conteudo">
     <form action="{{ route('game.atualizar-progresso', ['licao' => $licao->id]) }}" method="POST">
         @csrf
         <input type="hidden" name="questao_id" value="{{ $questao->id }}">
+        
+       
         
         <div class="quiz">
     <p>{!! $questao->enunciado !!}</p>
@@ -132,6 +143,8 @@
 </div>
     </form>
     </div>
+    @else
+        <p class="erro">Nenhuma questão encontrada.</p>
     @endif
 </body>
 </html>

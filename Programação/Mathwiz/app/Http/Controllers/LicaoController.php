@@ -10,7 +10,7 @@ class LicaoController extends Controller
 {
     public function createLicoes()
     {
-        // Definindo as lições organizadas por unidade
+    
         $licoes = [
             'Unidade 1' => ['Lição 1', 'Lição 2', 'Lição 3', 'Lição 4', 'Lição 5'],
             'Unidade 2' => ['Lição 6', 'Lição 7', 'Lição 8', 'Lição 9', 'Lição 10'],
