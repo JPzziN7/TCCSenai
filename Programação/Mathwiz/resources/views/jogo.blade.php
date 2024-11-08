@@ -96,7 +96,10 @@
     
             @if (isset($mensagem))
     <div class="mensagem">
-        <p>{{ $mensagem }}</p>
+    <div class="completou">
+    <p>{{ $mensagem }}</p>
+    </div>
+        
     </div>
     @elseif ($alunoLicao->completa)
     <div class="completou">
