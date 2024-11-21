@@ -136,7 +136,7 @@
                 <li>
                     <input type="checkbox" name="checks" id="check{{ $i }}"
                         {{ $i <= $alunoLicao->progresso ? 'checked' : '' }} disabled>
-                    <label for="check{{ $i }}">item {{ $i }}</label>
+                    <label for="check{{ $i }}"> </label>
                 </li>
             @endfor
         </ul>

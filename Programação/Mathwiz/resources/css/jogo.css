@@ -202,6 +202,12 @@ body{
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    border-radius: 10px;
+    height: 30px;
+    background-color: #e0e0e0;
 }
 
 .acoes ul li {
@@ -211,13 +217,22 @@ body{
     font-size: 16px;
     font-weight: bold;
     color: #333;
-    border: 2px solid #ccc;
-    border-radius: 8px;
     background-color: #e0e0e0;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 10px;
+    transform: translateX(-100%); 
+    animation: slideIn 3s ease forwards; 
+    animation-delay: var(--delay, 0s);
+}
+
+/* Definição da animação */
+@keyframes slideIn {
+    to {
+        opacity: 1; /* Torna visível */
+        transform: translateX(0); /* Move para a posição original */
+    }
 }
 
 .acoes input[type="checkbox"]:checked + label {
@@ -226,7 +241,6 @@ body{
     border-color: #4CAF50;
     display: flex;
     align-items: center;
-    border-radius: 8px;
     
 }
 .acoes input[type="checkbox"]:checked + label {
@@ -240,11 +254,7 @@ body{
     height: 100%;
     color: #fff;
 }
-.acoes ul li:hover {
-    background-color: #f4f4f4;
-    cursor: pointer;
-    transform: translateY(-2px);
-}
+
 .acoes input[type="checkbox"]:disabled ~ li {
     color: #999;
     background-color: #ddd;
