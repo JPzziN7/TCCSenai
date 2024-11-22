@@ -1,0 +1,128 @@
+/* styles.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #5C0D9A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    overflow: hidden;
+    animation: fadeInBackground 2s ease-in-out forwards; /* Animação de fundo */
+}
+
+/* Contêiner de erro */
+.error-container {
+    text-align: center;
+    display: flex;
+    flex-direction: row-reverse;
+    animation: slideInContainer 1s ease-out forwards; /* Animação do contêiner */
+}
+
+/* Código de erro 404 */
+.error-code {
+    font-size: 6rem;
+    font-weight: bold;
+    color: #ff6f61;
+    animation: popInCode 1s ease-out forwards; /* Animação para o código */
+}
+
+/* Mensagem de erro */
+.error-message {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    color: white;
+    animation: fadeInMessage 1.5s ease-in-out forwards; /* Animação de fade para a mensagem */
+    opacity: 0; /* Inicialmente invisível */
+}
+
+/* Botão */
+.error-button {
+    text-decoration: none;
+    background-color: #ff6f61;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    animation: slideInButton 1s ease-out forwards; /* Animação para o botão */
+    transform: translateY(20px);
+    opacity: 0; /* Inicialmente invisível */
+}
+
+.error-button:hover {
+    background-color: #e6554f;
+}
+
+/* Animações */
+@keyframes fadeInBackground {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInContainer {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes popInCode {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInMessage {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInButton {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.mascote {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    animation: bounce 1.5s infinite;
+}
+
+/* Sugestões */
+.suggestions {
+    margin-top: 20px;
+}
+
+.suggestions .error-button {
+    margin: 0 10px;
+}
+
+/* Animação de "bounce" para a mascote */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}

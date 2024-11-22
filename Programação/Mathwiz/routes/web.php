@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::fallback(function () {
+    return response()->view('error404', [], 404);
+});
 
 Route::get('/cadastro', [RegisterController::class, 'showRegistrationForm'])->name('cadastro')->middleware('guest');
 
@@ -30,6 +33,10 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/game/{materia}/{licao}/{unidade}', [JogoController::class, 'show'])->name('game');
 Route::post('/game/{licao}/atualizar-progresso', [JogoController::class, 'atualizarProgresso'])->name('game.atualizar-progresso');
 
+
+Route::get('/ranking', function () {
+    return view('ranking');
+});
 
 Route::get('/criar-unidades', [UnidadeController::class, 'createUnidades']);
 Route::get('/criar-licoes', [LicaoController::class, 'createLicoes']);
