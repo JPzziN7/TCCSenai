@@ -8,6 +8,7 @@ use App\Http\Controllers\UnidadeController;
 use App\Http\Controllers\LicaoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JogoController;
+use App\Http\Controllers\RankingController;
 use App\Models\Unidade;
 use Illuminate\Http\Request;
 
@@ -34,15 +35,14 @@ Route::get('/game/{materia}/{licao}/{unidade}', [JogoController::class, 'show'])
 Route::post('/game/{licao}/atualizar-progresso', [JogoController::class, 'atualizarProgresso'])->name('game.atualizar-progresso');
 
 
-Route::get('/ranking', function () {
-    return view('ranking');
-});
+
+Route::get('/ranking', [RankingController::class, 'index'])->name('ranking');
 
 Route::get('/criar-unidades', [UnidadeController::class, 'createUnidades']);
 Route::get('/criar-licoes', [LicaoController::class, 'createLicoes']);
 Route::post('/selecionar-operacao', function () {
     $operacao = request('operacao');
-    session(['operacao' => $operacao, 'unidade' => 1]); // Reinicia a unidade ao selecionar a operação
+    session(['operacao' => $operacao, 'unidade' => 1]); 
     return redirect()->route('home');
 })->name('selecionar.operacao');
 

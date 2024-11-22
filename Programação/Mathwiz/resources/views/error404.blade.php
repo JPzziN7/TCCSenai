@@ -14,7 +14,7 @@
         <h1 class="error-code">404</h1>
         <p class="error-message">Ops! Não encontramos essa página. Vamos voltar à diversão?</p>
         <div class="suggestions">
-            <a href="{{ route('home') }}" class="error-button">Página Inicial</a>
+            <a href="{{ url('/') }}" class="error-button">Página Inicial</a>
         </div>
     </div>
     </div>

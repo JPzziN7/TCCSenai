@@ -28,11 +28,33 @@ header label img{
     margin-right: 20px;
     border-radius: 50%;
     border: 3px solid white;
-}header .caixa {
+}
+
+header div {
+    display: flex; /* Organiza os elementos lado a lado */
+    align-items: center; /* Alinha verticalmente ao centro */
+    gap: 8px; /* Espaço entre o "R" e o ícone */
+}
+
+header div a {
+    font-size: 16px; /* Ajusta o tamanho do texto */
+    font-weight: bold; /* Deixa o texto em negrito */
+    color: #007bff; /* Cor do texto */
+    text-decoration: none; /* Remove sublinhado do link */
+    padding: 6px 10px;
+    border-radius: 4px;
+    background-color: #e6f2ff; /* Fundo levemente azul */
+    transition: background-color 0.3s ease;
+}
+
+header div a:hover {
+    background-color: #cce4ff; /* Cor ao passar o mouse */
+    color: #0056b3; /* Cor do texto ao passar o mouse */
+}
+header .caixa {
     position: absolute;
     background-color: #f4f4f9; /* Tom mais suave */
     border-radius: 15px;
-    height: 465px;
     width: 400px;
     right: 30px;
     top: 60px;
@@ -42,6 +64,7 @@ header label img{
     overflow: hidden; /* Evita que o conteúdo saia da borda */
     transition: all 0.3s ease; /* Adiciona uma transição suave */
 }
+
 
 .caixa-conteudo {
     width: 100%;
@@ -63,7 +86,10 @@ header label img{
     align-items: center;
     gap: 15px; /* Maior espaçamento entre os itens */
 }
-
+.perfil-imagem{
+    display: flex;
+    flex-direction: column;
+}
 .perfil-imagem img {
     width: 120px;
     height: 120px;
@@ -76,13 +102,51 @@ header label img{
 .perfil-imagem img:hover {
     transform: scale(1.05); /* Efeito de zoom na imagem */
 }
-
 #username {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
-    color: #2c3e50; /* Cor mais sóbria */
-    text-transform: capitalize; /* Adiciona capitalização no nome */
+    color: #2c3e50; /* Mantendo o estilo */
 }
+
+.imagem-perfil {
+    position: relative; /* Define a posição para o conteúdo dentro */
+    width: 120px; /* Tamanho da imagem */
+    height: 120px; /* Tamanho da imagem */
+    border-radius: 50%; /* Torna o contêiner circular */
+    overflow: hidden; /* Garante que o botão não ultrapasse os limites */
+}
+
+.imagem-perfil img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; /* Imagem circular */
+    display: block;
+}
+
+#mudar-imagem {
+    position: absolute; /* Para posicionar sobre a imagem */
+    width: 100%;
+    height: 100%;
+    top: 50%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta para o centro exato */
+    padding: 5px 10px;
+    font-size: 12px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo semitransparente */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0; /* Invisível por padrão */
+    transition: opacity 0.3s ease-in-out; /* Suavidade na exibição */
+}
+
+.imagem-perfil:hover #mudar-imagem {
+    opacity: 1; /* Exibe o botão ao passar o mouse */
+}
+
+
 
 .perfil-info {
     list-style: none;
@@ -242,6 +306,89 @@ main h1 button:focus {
     background-color: #3498db; /* Azul mais tranquilo e elegante */
 }
 
+/* Estilo do fundo do #nav para cada operação */
+body.operacao-1 {
+    background-color: #e9f5e9; /* Fundo verde suave para Adição */
+}
+
+body.operacao-2 {
+    background-color: #fde8ef; /* Fundo rosa suave para Subtração */
+}
+
+body.operacao-3 {
+    background-color: #eaf4fb; /* Fundo azul suave para Divisão */
+}
+
+body.operacao-4 {
+    background-color: #fff5e6; /* Fundo amarelo suave para Multiplicação */
+}
+/* Estilos dinâmicos para operações */
+body.operacao-1 main h1 button,
+body.operacao-1 main .cards .card a,
+body.operacao-1 #nav  {
+    background-color: #28a745; /* Verde */
+}
+
+
+body.operacao-2 main h1 button,
+body.operacao-2 main .cards .card a,
+body.operacao-2 #nav  {
+    background-color: #e91e63; /* Rosa */
+}
+
+body.operacao-3 main h1 button,
+body.operacao-3 main .cards .card a,
+body.operacao-3 #nav  {
+    background-color: #3498db; /* Azul */
+}
+
+body.operacao-4 main h1 button,
+body.operacao-4 main .cards .card a,
+body.operacao-4 #nav {
+    background-color: #f39c12; /* Amarelo */
+
+}
+
+body.operacao-1 h1,
+body.operacao-1 .card p span  {
+    color: #28a745; /* Verde para Adição */
+}
+
+body.operacao-2 h1,
+body.operacao-2 .card p span  {
+    color: #e91e63; /* Rosa para Subtração */
+}
+
+body.operacao-3 h1,
+body.operacao-3 .card p span  {
+    color: #3498db; /* Azul para Divisão */
+}
+
+body.operacao-4 h1,
+body.operacao-4 .card p span {
+    color: #f39c12; /* Amarelo para Multiplicação */
+}
+
+
+
+/* Opcional: ajuste da cor do texto para contraste */
+body.operacao-1 #nav p, 
+body.operacao-2 #nav p, 
+body.operacao-3 #nav p, 
+body.operacao-4 #nav p,
+body.operacao-1 #nav button, 
+body.operacao-2 #nav button, 
+body.operacao-3 #nav button, 
+body.operacao-4 #nav button  {
+    color: #ffffff; /* Cor do texto para contraste */
+}
+
+/* Hover Effects */
+main h1 button:hover,
+main .cards .card a:hover {
+    filter: brightness(1.2);
+    transform: scale(1.1);
+}
 
 main #nav {
     border: 1px solid #dcdcdc;
@@ -298,7 +445,7 @@ main .cards .card {
     height: 300px; /* Altura reduzida */
     background-color: #f0f2f5;
     border-radius: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     padding: 10px; /* Padding reduzido */
     gap: 8px; /* Gap menor */
     transition: transform 0.3s;
@@ -342,6 +489,7 @@ main .cards .card a {
 
 main .cards .card a:hover {
     background-color: #2980b9;
+    transition: all 1s;
 }
 
 main .cards .card img {

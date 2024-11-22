@@ -8,21 +8,27 @@
     @vite('resources/css/TelaPrincipal.css')
     <link rel="shortcut icon" href="{{ asset('images/LogoIcon.png') }}" type="image/x-icon">
 </head>
-<body>
+<body class="{{ 'operacao-' . session('operacao') }}">
     @if(session('error'))
     {{session('error')}}
     @endif
     <header>
         <img src="{{ asset('images/LogoBranca.png') }}" alt="" id="logo">
         <input type="checkbox" id="perfilIcon">
+        <div>
+        <a href="{{ route('ranking')}}">R</a>
         <label for="perfilIcon"><img src="{{ asset('images/iconPerfil.jfif') }}" alt="perfil"></label>
+        </div>
         <div class="caixa">
     <div class="caixa-conteudo">
         @auth
             <!-- Perfil do Usuário -->
             <div class="perfil">
                 <div class="perfil-imagem">
-                    <img src="{{ asset('images/iconPerfil.jfif') }}" alt="Foto de perfil de {{ Auth::user()->username }}">
+                <div class="imagem-perfil">
+    <img src="{{ asset('images/iconPerfil.jfif') }}" alt="Foto de perfil de {{ Auth::user()->username }}">
+    <button id="mudar-imagem">Mudar Imagem</button>
+</div>
                     <p id="username"><span>{{ Auth::user()->username }}</span></p> 
                 </div>
 </div>
@@ -60,7 +66,7 @@
             </form>
             </div>
         @else 
-        <h1>
+        <h1 class="titulo">
         @switch(session('operacao'))
         @case(1)
             Adição

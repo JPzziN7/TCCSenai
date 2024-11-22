@@ -272,6 +272,7 @@ body{
     transition: background-color 0.3s ease, transform 0.3s ease;
     width: 150px; /* Largura completa dentro do contêiner */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    margin-right: 27px;
 }
 
 /* Efeito ao passar o mouse */

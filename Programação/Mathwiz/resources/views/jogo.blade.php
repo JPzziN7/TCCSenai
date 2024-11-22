@@ -141,6 +141,9 @@
             @endfor
         </ul>
     </div>
+    <div class="personagem">
+        
+    </div>
         <button type="submit" class="continuar-btn">Continuar</button>
     
 </div>
