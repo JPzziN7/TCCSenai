@@ -37,18 +37,17 @@ header div {
 }
 
 header div a {
-    font-size: 16px; /* Ajusta o tamanho do texto */
+    font-size: 20px;
     font-weight: bold; /* Deixa o texto em negrito */
     color: #007bff; /* Cor do texto */
     text-decoration: none; /* Remove sublinhado do link */
     padding: 6px 10px;
     border-radius: 4px;
-    background-color: #e6f2ff; /* Fundo levemente azul */
-    transition: background-color 0.3s ease;
+    transition: all 1s;
 }
 
 header div a:hover {
-    background-color: #cce4ff; /* Cor ao passar o mouse */
+    font-size: 23px;
     color: #0056b3; /* Cor do texto ao passar o mouse */
 }
 header .caixa {

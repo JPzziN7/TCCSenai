@@ -16,7 +16,7 @@
         <img src="{{ asset('images/LogoBranca.png') }}" alt="" id="logo">
         <input type="checkbox" id="perfilIcon">
         <div>
-        <a href="{{ route('ranking')}}">R</a>
+        <a href="{{ route('ranking')}}">🏆</a>
         <label for="perfilIcon"><img src="{{ asset('images/iconPerfil.jfif') }}" alt="perfil"></label>
         </div>
         <div class="caixa">
@@ -59,7 +59,7 @@
             <h1>Escolha uma operação:</h1>
             <form action="{{ route('selecionar.operacao') }}" method="POST">
                 @csrf
-                <button name="operacao" value="1" class="adicao">⊕</button>
+                <button name="operacao" value="1" class="adicao">+</button>
         <button name="operacao" value="2" class="subtracao">−</button>
         <button name="operacao" value="3" class="divisao">÷</button>
         <button name="operacao" value="4" class="multiplicacao">×</button>
