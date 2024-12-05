@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&family=Red+Rose:wght@300..700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Paytone One", sans-serif;
+}
+html{
+    scroll-behavior: smooth;
+}
+header{
+    background-color: #5C0D9A;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+}
+header img{
+    height: 90px;
+    margin-left: 10px;
+}
+header .nav{
+    display: flex;
+    align-items: center;
+}
+header .nav ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    width: 400px;
+    list-style: none;
+}
+header .nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+header .nav ul li a:hover{
+    color: #d09cf1;
+    transition: all .5s
+} 
+#inicio {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+#inicio .imagem-fundo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; 
+}
+
+#inicio a {
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 30px; 
+    background: linear-gradient(45deg, #ff6a00, #ff3f34); 
+    border-radius: 8px; 
+    transition: all 0.3s ease; 
+    position: absolute;
+    bottom: 90px;
+    left: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    cursor: pointer; 
+}
+
+#inicio a:hover {
+    background: linear-gradient(45deg, #ff3f34, #ff6a00); 
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px); 
+}
+
+#inicio a:focus {
+    outline: none; 
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.7); 
+}
+
+#sobre {
+    width: 97%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 -10px 15px rgba(0, 0, 0, 0.1), 0 10px 15px rgba(34, 22, 22, 0.1); /* Sombra em cima e embaixo */
+    background-color: #f0f8ff;
+}
+
+#sobre h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#sobre p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #555;
+    line-height: 1.6;
+    max-width: 800px;
+}
+
+#personagens{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 737px;
+}
+#personagens .cards{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+#personagens .cards .card{
+    position: relative;
+    width: 300px;
+    height: 350px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 5px;
+    transition: filter 0.3s ease;
+}
+#personagens .cards .green {
+    background-color: #28a745; /* Verde vibrante */
+}
+
+#personagens .cards .pink {
+    background-color: #e91e63; /* Rosa forte */
+}
+
+#personagens .cards .blue {
+    background-color: #3498db; /* Azul clássico */
+}
+
+#personagens .cards .orange {
+    background-color: #f39c12; /* Laranja queimado */
+}
+#personagens .cards .card:hover{
+    width: 325px;
+    height: 375px;
+    transition: all .5s;
+}
+#personagens .cards .card .conteudocard{
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: white;
+    padding: 10px;
+    text-align: center;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#personagens .cards .card:hover .conteudocard {
+    opacity: 1; 
+}
+#personagens .cards .card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; 
+    filter: grayscale(0%); 
+    transition: filter 0.3s ease;
+}
+#personagens .cards .card:hover img {
+    filter: grayscale(100%); 
+}
+#personagens .cards .card p{
+    width: 290px;
+    margin-right: 17px;
+}
+#comojogar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 737px;
+    background-color: #f0f8ff; 
+    padding: 20px; 
+    box-sizing: border-box; 
+    box-shadow: 0 -10px 15px rgba(0, 0, 0, 0.1);
+}
+
+#comojogar h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); 
+}
+
+#comojogar p {
+    font-size: 1.2rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+#comojogar iframe {
+    border-radius: 10px; /* Bordas arredondadas no iframe */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Sombra ao redor do iframe */
+    transition: transform 0.3s ease; /* Transição para o efeito de hover */
+}
+
+#comojogar iframe:hover {
+    transform: scale(1.05); /* Leve aumento no vídeo quando passar o mouse */
+}
+footer{
+    background-color: #f0f8ff; 
+}
+footer #ondas{
+    width: 100%;
+}
+footer #rodape{
+    background-color: #2C2C2C;
+    width: 100%;
+    margin-top: -10px;
+    color:white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+footer #rodape img{
+    width: 200px;
+}
+footer #rodape div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 10%;
+    margin-left: 10px;
+}
+footer #rodape div .icon{
+    width: 20px;
+}
